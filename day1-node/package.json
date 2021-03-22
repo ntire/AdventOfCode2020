@@ -1,0 +1,12 @@
+{
+  "name": "day1-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "day1_part1.js",
+  "scripts": {
+    "test": "node day1_part1.js test_input.txt"
+  },
+  "author": "",
+  "license": "ISC",
+  "type": "module"
+}
