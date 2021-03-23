@@ -1,17 +1,13 @@
 package main
 
 import (
-	"fmt"
 	"bufio"
 	"log"	
 	"os"
 )
 
-func main() {
-	f, err := os.Open("input_test")
-	step_x := 3
-	step_y := 1
-
+func treecount(filename string, step_x int, step_y int) int{
+	f, err := os.Open(filename)
 
 	if err != nil {
 		log.Fatal(err)
@@ -48,5 +44,5 @@ func main() {
 		log.Fatal(err)
 	}
 
-	fmt.Println("Result ", tree_counter)
+	return tree_counter
 }
