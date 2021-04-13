@@ -1,7 +1,6 @@
 import re
 
 def parse_line(line):
-    graph = dict()
     # Extract graph data from string
     node_pattern = re.compile(r"^((\w+ \w+) bag[s]* contain)")
     m = node_pattern.match(line)
@@ -29,3 +28,18 @@ def parse_lines(lines):
             for leave in leaves:
                 graph.get(root_id).append(leave)
     return graph
+
+def find_valid_different_colors_holding_shiny_bag(graph):
+    bag_color = "shiny gold"
+    unique_bag_colors = find_nodes_with_leave(graph, bag_color)
+    return len(unique_bag_colors)
+    
+def find_nodes_with_leave(graph, searched_leave_id, unique_bag_colors = set()):
+    for root in graph.keys():
+        leaves = graph.get(root)
+        for leave in leaves:
+            # if a root leave contains the searched leave, than check if the root itself is another leave
+            if searched_leave_id == leave[0]:
+                unique_bag_colors.add(root)
+                unique_bag_colors = unique_bag_colors.union(find_nodes_with_leave(graph, root, unique_bag_colors))
+    return unique_bag_colors
