@@ -43,3 +43,14 @@ def find_nodes_with_leave(graph, searched_leave_id, unique_bag_colors = set()):
                 unique_bag_colors.add(root)
                 unique_bag_colors = unique_bag_colors.union(find_nodes_with_leave(graph, root, unique_bag_colors))
     return unique_bag_colors
+
+def get_number_of_contained_bags(graph, target_bag = "shiny gold"):
+    bag_count = 0
+
+    for node_id in graph.keys():
+        if node_id == target_bag:
+            for leave in graph.get(node_id):
+                leave_id = leave[0]
+                leave_multiplier = leave[1]
+                bag_count += leave_multiplier + leave_multiplier * get_number_of_contained_bags(graph, leave_id)
+    return bag_count
