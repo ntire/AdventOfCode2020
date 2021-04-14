@@ -36,3 +36,30 @@ def bootloop_finder(bootcodes):
             visited_registers.add(index)
 
     return acc, index
+
+
+
+def run_program(bootcodes):
+    acc = 0
+    index = 0
+    is_bootloop = False
+    is_terminated = False
+    termination_index = len(bootcodes)
+    
+    visited_registers = set()
+    
+    while not is_bootloop and not is_terminated:
+        d_acc, d_index = execute_command(bootcodes[index])
+        index += d_index
+
+        if index == termination_index:
+            is_bootloop = False
+            is_terminated = True
+            acc += d_acc
+        elif index in visited_registers:
+            is_bootloop = True
+        else:
+            acc += d_acc
+            visited_registers.add(index)
+
+    return acc, index, is_bootloop
