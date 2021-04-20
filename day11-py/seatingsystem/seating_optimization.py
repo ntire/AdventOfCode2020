@@ -10,9 +10,6 @@ def find_stable_seating(layout):
     return new_layout
 
 
-
-
-
 def run_simple_seating_simulation(layout):
     optimized_layout = list()
 
@@ -21,7 +18,7 @@ def run_simple_seating_simulation(layout):
         for col in range (len(layout[0])):
             cell = layout[row][col]
             
-            occupied_adjacent_seat_counter = count_adjacent_occupied_seat(layout, row, col)
+            occupied_adjacent_seat_counter = count_immediatly_adjacent_occupied_seat(layout, row, col)
             #print("(Row, Col) {},{} with {} occupied adjacent".format(row, col, occupied_adjacent_seat_counter))
             has_no_adjacent_occupied_seat = occupied_adjacent_seat_counter == 0
             has_more_than_tree_occupied_adjacent_seats = occupied_adjacent_seat_counter > 3
@@ -40,7 +37,8 @@ def run_simple_seating_simulation(layout):
     
     return optimized_layout
 
-def count_adjacent_occupied_seat(layout, row, col):
+
+def count_immediatly_adjacent_occupied_seat(layout, row, col):
     max_width = len(layout[0]) - 1
     max_height = len(layout) - 1
     
@@ -53,5 +51,3 @@ def count_adjacent_occupied_seat(layout, row, col):
             elif layout[r][c] == '#':
                 occupied_adjacent_seat_counter += 1
     return occupied_adjacent_seat_counter
-    
-
