@@ -54,6 +54,14 @@ def turn_rotation_vector(current_rotation_vector, action, angle):
         elif index == -1: 
             index = len(vectors) - 1
         
-        print("Step {} Index {} makes {}".format(steps, index, vectors[index]))
+        # print("Step {} Index {} makes {}".format(steps, index, vectors[index]))
         steps -= 1
     return vectors[index]
+
+def find_manhattan_distance_from_file(filename):
+    with open(filename) as f:
+        instructions = [[line[0], int(line.rstrip()[1:])] for line in f.readlines()]
+    x, y = find_destination(instructions)
+    mandis = abs(x) + abs(y)
+    return mandis
+
