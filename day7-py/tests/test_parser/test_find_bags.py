@@ -23,7 +23,7 @@ def test_three_colors():
     assert 3 == valid_colors
 
 def test_input_test_file():
-    filename = "input_test"
+    filename = "day7-py/input_test"
     with open(filename) as f:
        lines = f.readlines()
     

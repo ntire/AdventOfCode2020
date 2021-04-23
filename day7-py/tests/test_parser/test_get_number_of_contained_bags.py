@@ -10,7 +10,7 @@ def test_simple_file():
     assert 6 == no_of_bags
 
 def test_part1_test_file():
-    filename = "input_test"
+    filename = "day7-py/input_test"
     with open(filename) as f:
        lines = f.readlines()
     
@@ -20,7 +20,7 @@ def test_part1_test_file():
     assert 32 == no_of_bags
 
 def test_part2_test_file():
-    filename = "input_test_part2"
+    filename = "day7-py/input_test_part2"
     with open(filename) as f:
        lines = f.readlines()
     
